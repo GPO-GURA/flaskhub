@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rent a Bike</title>
+</head>
+<body>
+
+<h2>Rent a Bike</h2>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <p style="color:red;">{{ message }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form method="POST" action="{{ url_for('rental_post') }}">
+
+    <label for="customer_email">Customer Email:</label>
+    <input type="email" name="customer_email"  required>
+    <br><br>
+
+    <label for="bike_id">Select Bike:</label>
+    <select name="bike_id" required>
+        {% for bike in bikes %}
+            <option value="{{ bike[0] }}">
+                Bike {{ bike[0] }} - {{ bike[1] }} (Battery: {{ bike[2] }}%)
+            </option>
+        {% endfor %}
+    </select>
+    <br><br>
+
+    <label for="start_date">Start Date:</label>
+    <input type="date" name="start_date" min="{{ today }}" required>
+    <br><br>
+
+    <label for="return_date">Return Date:</label>
+    <input type="date" name="return_date" min="{{ today }}" required>
+    <br><br>
+
+    <button type="submit">Rent Bike</button>
+
+</form>
+
+</body>
+</html>

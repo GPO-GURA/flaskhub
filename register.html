@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eco-Bike Registration</title>
+</head>
+<body>
+
+    <h3>Register</h3>
+    <br>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div>
+        <form method="post" action="/register">
+            <input type="text" name="fname" placeholder="Your First Name" autofocus="" required>
+            <input type="text" name="sname" placeholder="Your Surname" autofocus="" required>
+            <input type="email" name="email" placeholder="Your Email" autofocus="" required>
+            <input type="password" name="password" placeholder="Your Password" required>
+            <button class="button">Register</button>
+        </form>
+    </div>
+
+    <p style="margin-top: 10px;">
+        Have an account?
+        <a href="/login"><strong>Login here</strong></a>
+    </p>
+    
+</body>
+</html>
+

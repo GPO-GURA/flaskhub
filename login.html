@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Eco-Bike Login</title>
+</head>
+
+<body>
+    <h3>Login</h3>
+    <br>
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class="flashes">
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div>
+        <form method="POST" action="/login">
+            <input type="email" name="email" placeholder="Your Email" required autofocus>
+            <input type="password" name="password" placeholder="Your Password" required>
+
+            <label>
+                <input type="checkbox" name="remember">
+                Remember me
+            </label>
+
+            <button type="submit">Login</button>
+        </form>
+
+
+
+    </div>
+
+    <p style="margin-top: 10px;">
+        Don't have an account?
+        <a href="/register"><strong>Register here</strong></a>
+    </p>
+
+</body>
+
+</html>
